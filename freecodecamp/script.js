@@ -179,8 +179,8 @@ function buyWeapon() {
   }
   button2.innerText = "Sell weapon for 15 gold";
   button2.onclick = sellWeapon;
-  button3.innerText = "buy another weapon for 15 gold";
-  button3.onclick = buyWeapon;
+  button3.innerText = "Go to Store";
+  button3.onclick = goStore;
 }
 
 function goTown() {
