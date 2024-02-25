@@ -1,3 +1,7 @@
+import { hello } from "./hello.js";
+
+hello();
+
 // declare empty values and other default
 let xp = 0;
 let health = 100;
@@ -181,10 +185,6 @@ function buyWeapon() {
   button2.onclick = sellWeapon;
   button3.innerText = "Go to Store";
   button3.onclick = goStore;
-}
-
-function goTown() {
-  update(locations[0]);
 }
 
 function update(locations) {
