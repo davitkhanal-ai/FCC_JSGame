@@ -4,6 +4,9 @@ const express = require("express");
 const app = express();
 const path = require("path");
 
+// requiring the dotenv
+require("dotenv").config();
+
 // Serve static files from the freecodecamp directory
 app.use(express.static("freecodecamp"));
 
@@ -13,7 +16,7 @@ app.get("/", (req, res) => {
 });
 
 // Start the server
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
