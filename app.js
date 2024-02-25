@@ -1,22 +1,22 @@
-// index.js
-
 const express = require("express");
 const app = express();
 const path = require("path");
+const expressLayouts = require("express-ejs-layouts");
 
-// requiring the dotenv
-require("dotenv").config();
+// middlewares
+app.use(express.urlencoded({ extended: true }));
+app.use(expressLayouts);
+app.use(express.static(__dirname + "/public"));
 
-// Serve static files from the freecodecamp directory
-app.use(express.static("freecodecamp"));
+// to get from routers
+const gameRoutes = require("./server/routes/gameRoutes");
+app.get("/", gameRoutes);
 
-// Define a route to serve the HTML file
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "freecodecamp", "index.html"));
-});
+// to layouts
+app.set("layout", path.join(__dirname, "views/layouts/main.ejs"));
+app.set("view engine", "ejs");
 
-// Start the server
-const port = process.env.PORT;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+//server boot
+app.listen(8000, () => {
+  console.log("Server is running");
 });
