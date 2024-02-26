@@ -1,14 +1,20 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const gameRoutes = require("./server/routes/gameRoutes");
-// const expressLayouts = require("express-ejs-layouts");
+const jwt = require("jsonwebtoken");
+const db = require("./server/database/db");
+const rpgRouter = require("./server/routes/routes");
 
 // middlewares
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
+// database
+require("./server/database/auth");
 // to router
-app.use("/", gameRoutes);
+app.use("/", rpgRouter);
+
+// Protected route
 
 //server boot
 app.listen(3000, () => {
